@@ -11,6 +11,7 @@ const Hero = ({images}) => {
                         </Link>
                     </li>
                 ))}
+
             </ul>
         )
     }
@@ -21,15 +22,19 @@ const Hero = ({images}) => {
         // target and update main image
     }
 
+    if (!images) {
+        return null;
+    } else {
+        return (
+            <div id='hero'>
+                <div><img src={"//" + images[0].mainUrl} /></div>
+                <div><h2>{images[0].title}</h2>
+                    <h2>{images[0].description}</h2></div>
+                <div><Thumbs /></div>
+            </div>
+        );
 
-    return (
-        <div>
-            <img src={"//" + images[0].mainUrl} />
-            <h2>{images[0].title}</h2>
-            <h2>{images[0].description}</h2>
-            <Thumbs />
-        </div>
-    );
+    }
 }
 
 
