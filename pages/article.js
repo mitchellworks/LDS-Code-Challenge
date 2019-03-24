@@ -3,6 +3,7 @@ import '../styles.scss'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import Vid from '../components/vid'
+import VidScript from '../components/vidScript'
 import fetch from 'isomorphic-unfetch'
 
 class Article extends Component {
@@ -15,6 +16,10 @@ class Article extends Component {
         const res = await fetch(`https://interview-project-17987.herokuapp.com/api/article/${id}`)
         const article = await res.json()
         return { article }
+    }
+
+    componentDidMount() {
+        VidScript();
     }
 
     render() {
