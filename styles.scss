@@ -1,5 +1,7 @@
+// Here's our google font, per requirements
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 
+// Here are some variables I pulled from LDS.org, in case we need them.
 :root {
   --colorFacebook:#3b5998;--colorInstagram:#3c5a96;--colorTwitter:#00b6f1;--colorPinterest:#cb2027;
   --colorYoutube:#cd201f;--colorOdnok:#ed812b;--colorVk:#45668e;--grey10:#d0d3d3;--grey20:#a9adad;
@@ -15,10 +17,18 @@
   --serif:"McKay","Baskerville","Palatino","Palatino Linotype","Georgia","Times New Roman",system-ui,-apple-system;--monospace:"Courier New","Courier",system-ui,-apple-system;--fontSizeRoot:100%;--fontSize11:0.6875rem;--fontSize13:0.8125rem;--fontSize14:0.875rem;--fontSize16:1rem;--fontSize18:1.125rem;--fontSize20:1.25rem;--fontSize28:1.75rem;--fontSize32:2rem;--fontSize42:2.625rem;--headerFontSize11:11px;--headerFontSize13:13px;--headerFontSize14:14px;--headerFontSize16:16px;--headerFontSize18:18px;--headerFontSize20:20px;--headerFontSize28:28px;--headerFontSize32:32px;--headerFontSize42:42px;--lineHeightTight:1.2;--lineHeight:1.4;--lineHeightLoose:1.6;--capitalize:capitalize;--uppercase:uppercase;--spacing4:0.25rem;--spacing8:0.5rem;--spacing16:1rem;--spacing24:1.5rem;--spacing32:2rem;--spacing64:4rem;--spacing128:8rem;--headerSpacing4:4px;--headerSpacing8:8px;--headerSpacing16:16px;--headerSpacing24:24px;--headerSpacing32:32px;--headerSpacing64:64px;--headerSpacing128:128px;--zIndexHigherThanLegacyPlatform:2000;--breakWidth480:480px;--breakWidth600:600px;--breakWidth840:840px;--breakWidth960:960px;--breakWidth1280:1280px;--breakWidth1440:1440px;--breakWidth1600:1600px;--breakWidthMax:var(--breakWidth1600);--breakWidthGutterShift:var(--breakWidth600);--gutter:var(--gutter,1.5rem);
 }
 
+// I did a couple media queries for phones, so the site is responsive.
+// We could have done it in reverse (media queries for large screens)
+// I don't care, just let me know what you prefer. With CSS Grid and viewport
+// units, I find we need fewer queries. On a complex site, we would often have
+// a tablet breakpoint, and maybe also an extra large desktop breakpoint.
+// But here, we just have phone and desktop.
+// Oh, one more note: The design wireframes didn't specify font sizes, so I haven't
+// worried much about them.
+
 $phone: "max-width: 768px";
 
 html {
-  height: 100%;
   height: auto;
 }
 
@@ -35,7 +45,7 @@ body {
 #hero {
   display: grid;
   width: 100%;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   grid-template-areas:
           "header header"

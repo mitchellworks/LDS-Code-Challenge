@@ -1,3 +1,5 @@
+/* This video component can be called in any page that has a need for an embedded video */
+
 const Vid = ({ title, description, url }) => {
     if (!title) {
         return null;
@@ -11,7 +13,7 @@ const Vid = ({ title, description, url }) => {
             </div>
         );
     }
-}
+};
 
 
 

@@ -1,3 +1,7 @@
+/* This is the app homepage. It displays a dynamic list of linked articles.
+*   it could be a class, but here is is just a functional component with no state.
+* */
+
 import Layout from '../components/layout'
 import '../styles.scss'
 import Link from 'next/link'
@@ -19,15 +23,15 @@ const Index = (props) => (
             ))}
         </ul>
     </Layout>
-)
+);
 
 Index.getInitialProps = async function() {
-    const res = await fetch('https://interview-project-17987.herokuapp.com/api/article')
-    const data = await res.json()
+    const res = await fetch('https://interview-project-17987.herokuapp.com/api/article');
+    const data = await res.json();
 
     return {
         articles: data
     }
-}
+};
 
 export default Index

@@ -1,3 +1,5 @@
+/* This is our wrapper, which would give us our toolbars, brand, etc  */
+
 import Header from './header'
 
 const Layout = props => (

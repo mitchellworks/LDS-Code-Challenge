@@ -1,3 +1,7 @@
+/* Hero is a class, rather than a functional component, because
+    that gives us a chance to set state on the thumbnails, so we can
+    style the featured one and replace the main image to match.
+ */
 import React, { Component } from 'react';
 
 class Hero extends Component {
@@ -12,7 +16,7 @@ class Hero extends Component {
     makeMain = (obj, index) => {
         // update the state, which updates class
         this.setState({on: index});
-    }
+    };
 
     render() {
         if (!this.props.images) {
@@ -28,6 +32,7 @@ class Hero extends Component {
     }
 }
 
+// This gives us our list of thumbnails.
 const Thumbs = (props) => {
 
     return (
@@ -43,8 +48,9 @@ const Thumbs = (props) => {
             </ul>
         </div>
     )
-}
+};
 
+// This gives us our main image, which is updated whenever the active thumbnail changes.
 const Main = ({image}) => {
     return (
         <React.Fragment>
@@ -53,7 +59,7 @@ const Main = ({image}) => {
         <h2>{image.description}</h2></div>
         </React.Fragment>
     )
-}
+};
 
 
 
