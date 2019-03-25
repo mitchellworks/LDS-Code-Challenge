@@ -1,41 +1,60 @@
-import Link from 'next/link'
+import React, { Component } from 'react';
 
-const Hero = ({images}) => {
-    const Thumbs = () => {
-        return (
-            <ul>
-                {images.map(obj => (
-                    <li key={obj.thumnailUrl}>
-                        <Link onClick={(e) => makeMain(obj, e)}>
-                            <img src={"//" + obj.thumbnailUrl} />
-                        </Link>
-                    </li>
-                ))}
+class Hero extends Component {
+    constructor(props) {
+        super(props);
 
-            </ul>
-        )
+        this.state = {
+            on: '0'
+        }
     }
 
-    const makeMain = (obj, e) => {
-        // add active class (remove other actives)
-        console.log("makeMain fired");
-        // target and update main image
+    makeMain = (obj, index) => {
+        // update the state, which updates class
+        this.setState({on: index});
     }
 
-    if (!images) {
-        return null;
-    } else {
-        return (
-            <div id='hero'>
-                <div><img src={"//" + images[0].mainUrl} /></div>
-                <div><h2>{images[0].title}</h2>
-                    <h2>{images[0].description}</h2></div>
-                <div><Thumbs /></div>
-            </div>
-        );
+    render() {
+        if (!this.props.images) {
+            return null;
+        }
+            return (
+                <div id='hero'>
+                    <Main image={this.props.images[this.state.on]}/>
+                    <Thumbs makeMain={this.makeMain} images={this.props.images} active={this.state.on}/>
+                </div>
+            );
 
     }
 }
+
+const Thumbs = (props) => {
+
+    return (
+        <div>
+            <ul>
+                {props.images.map((obj, index) => (
+                        <li key={index}>
+                            <img title={obj.title} src={"//" + obj.thumbnailUrl} className={(props.active === index) ? 'active' : ''} id={'t-' + index} onClick={() => props.makeMain(obj, index) } />
+                        </li>
+                    )
+                )}
+
+            </ul>
+        </div>
+    )
+}
+
+const Main = ({image}) => {
+    return (
+        <React.Fragment>
+        <div><img src={"//" + image.mainUrl} id='hero-img'/></div>
+        <div><h2>{image.title}</h2>
+        <h2>{image.description}</h2></div>
+        </React.Fragment>
+    )
+}
+
 
 
 
